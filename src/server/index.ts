@@ -3,7 +3,9 @@ import middie from '@fastify/middie'
 import serverRoutePlugin from './plugins/server-render-route/plugin'
 
 export const start = async ({ logger, middlewares, port }: any) => {
-  const fastify = Fastify()
+  const fastify = Fastify({
+    return503OnClosing: false,
+  })
 
   await fastify.register(middie)
   await fastify.register(serverRoutePlugin, { logger })

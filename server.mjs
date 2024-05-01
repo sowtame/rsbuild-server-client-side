@@ -52,9 +52,6 @@ const onUpdateServer = (assets) => {
     changedBy = 'server'
   }
 
-  console.log('🚀 ~ newMappedSize ~ mappedSize:', mappedSize)
-  console.log('🚀 ~ newMappedSize ~ newMappedSize:', newMappedSize)
-
   mappedSize = newMappedSize
 
   return changedBy
@@ -84,7 +81,6 @@ async function startDevServer() {
     const serverStats = stats.stats.filter((s) => s.compilation.name === 'Server')[0]
 
     const changedBy = cleanSSRCache(serverStats)
-    console.log('🚀 ~ rsbuild.onDevCompileDone ~ changedBy:', changedBy)
 
     if (changedBy === 'server') {
       if (fastify?.close) {
